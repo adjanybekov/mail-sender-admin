@@ -3,28 +3,75 @@ import { emailService } from "../../_services/email.service";
 import moment from "moment";
 import "./index.css";
 import { useHistory } from "react-router-dom";
-import store from "../../_mobx_storage/RecieverStorage";
-
+import { StoreContext } from "../../index";
+import { mailService } from "../../_services/mail.service";
 // import * as moment from 'moment';
 
 export const EmailsListPageImpl = (props) => {
+  const [emails, setEmails] = useState([]);
+  const [checked, setChecked] = useState([]);
   useEffect(() => {
     getEmails();
   }, []);
-  const [emails, setEmails] = useState([]);
+
   const history = useHistory();
+  const store = React.useContext(StoreContext);
   const getEmails = () => {
     emailService.getAllEmails().then((res) => {
-      console.log(res.data);
-      setEmails(res.data);
+      let emails = res.data;
+      let checkedmails = emails.map((obj) => {
+        checked.push(false);
+        return { ...obj, checked: false };
+      });
+
+      console.log(checkedmails, checked, "checked");
+      setChecked(checked);
+      setEmails(checkedmails);
     });
   };
 
-  function mailContact() {
+  function mailContact(email) {
     console.log("object");
-    store.recievers = ["asdad"];
+    store.addEmail(email);
     history.push("/compose");
   }
+
+  function handleMailSelected() {
+    // store.emails = receivers;
+    emails
+      .filter((x, index) => checked[index] == true)
+      .map((r) => {
+        console.log(r.email);
+        store.addEmail(r.email);
+      });
+
+    history.push("/compose");
+  }
+
+  function handleCheck(e, email, index) {
+    // e.preventDefault();
+    console.log(
+      emails,
+      emails[emails.indexOf(emails.find((x) => x.email == email))].checked
+    );
+    emails[
+      emails.indexOf(emails.find((x) => x.email == email))
+    ].checked = !emails[emails.indexOf(emails.find((x) => x.email == email))]
+      .checked;
+
+    console.log(
+      checked,
+      emails,
+      emails[emails.indexOf(emails.find((x) => x.email == email))].checked
+    );
+
+    let checkedd = [...checked];
+    checkedd[index] = !checkedd[index];
+    setChecked(checkedd);
+
+    setEmails(emails);
+  }
+
   return (
     <div>
       <div class="content-wrapper">
@@ -32,7 +79,7 @@ export const EmailsListPageImpl = (props) => {
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>List Mail {props.store.filter}</h1>
+                <h1>List Mail {store.filter}</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -76,7 +123,15 @@ export const EmailsListPageImpl = (props) => {
                           return (
                             <tr>
                               <td>
-                                <input type="checkbox" />
+                                <input
+                                  key={index}
+                                  type="checkbox"
+                                  name={x.email}
+                                  checked={checked[index]}
+                                  onChange={(e) => {
+                                    handleCheck(e, x.email, index);
+                                  }}
+                                />
                               </td>
                               <td>{x.email}</td>
                               <td>
@@ -85,7 +140,9 @@ export const EmailsListPageImpl = (props) => {
                               <td>{String(x.createdAt)}</td>
                               <td>
                                 <button>Delete</button>
-                                <button onClick={mailContact}>Mail</button>
+                                <button onClick={() => mailContact(x.email)}>
+                                  Mail
+                                </button>
                                 <button>Deactivate</button>
                               </td>
                             </tr>
@@ -97,7 +154,9 @@ export const EmailsListPageImpl = (props) => {
                           {/* <th>#</th>
                           <th>email</th>
                           <th>created_at</th> */}
-                          <button>mail selected</button>
+                          <button onClick={handleMailSelected}>
+                            mail selected
+                          </button>
                           <button>delete selected</button>
                           <div class="dropdown">
                             <button>...</button>

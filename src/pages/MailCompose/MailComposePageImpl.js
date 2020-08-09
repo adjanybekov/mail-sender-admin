@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { mailService } from "../../_services/mail.service";
 import { Editor } from "@tinymce/tinymce-react";
 import { TagsInput } from "../../_components";
-import store from "../../_mobx_storage/RecieverStorage";
+
+import { inject, observer, useObserver } from "mobx-react";
+import { StoreContext } from "../../index";
 
 export function MailComposePageImpl(props) {
+  const store = (window.store = React.useContext(StoreContext));
+
   const [to, setTo] = useState("");
   const [receivers, setReceivers] = useState([]);
   const [subject, setSubject] = useState("");
@@ -23,13 +27,14 @@ export function MailComposePageImpl(props) {
   };
 
   const selectedTags = (tags) => {
-    console.log(tags);
+    console.log(tags, "selected tags");
     setReceivers(tags);
   };
   useEffect(() => {
-    console.log(store.receivers, "props storage");
+    console.log(store.emails.slice(), "props storage");
   }, []);
-  return (
+
+  return useObserver(() => (
     <div>
       <div class="content-wrapper">
         <section class="content-header">
@@ -160,7 +165,14 @@ export function MailComposePageImpl(props) {
                         }}
                       /> */}
 
-                      <TagsInput selectedTags={selectedTags} tags={[]} set />
+                      <TagsInput
+                        selectedTags={selectedTags}
+                        tags={
+                          store.emails.length > 0
+                            ? store.emails.slice()
+                            : receivers
+                        }
+                      />
                     </div>
                     <div class="form-group">
                       <input
@@ -315,5 +327,5 @@ export function MailComposePageImpl(props) {
         </section>
       </div>
     </div>
-  );
+  ));
 }
