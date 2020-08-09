@@ -1,26 +1,23 @@
 import { urls } from "../_constants/urls";
-import axios from 'axios';
+import axios from "axios";
 
 export const mailService = {
-    createMail
+  createMail,
 };
 
-function createMail({to,subject,text}) {
-    const data= 
-    {
-        content: text,
-        receivers: [
-          to
-        ],
-        sender: "adjanybekov@gmail.com",
-        subject: subject
-      }
+function createMail({ receivers, subject, text }) {
+  const data = {
+    content: text,
+    receivers: receivers,
+    sender: "adjanybekov@gmail.com",
+    subject: subject,
+  };
 
-    const requestOptions = 
-        {method:'POST',
-        url:`${urls.mailUrl}/create`,
-        data:data
-        }
+  const requestOptions = {
+    method: "POST",
+    url: `${urls.mailUrl}/create`,
+    data: data,
+  };
 
-    return axios(requestOptions);
+  return axios(requestOptions);
 }

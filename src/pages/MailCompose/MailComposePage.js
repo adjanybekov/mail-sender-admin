@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { mailService } from "../../_services/mail.service";
-import { Editor } from "@tinymce/tinymce-react";
+// import { Editor } from "@tinymce/tinymce-react";
 import { MyEditor } from "./MyEditor";
 
 import SunEditor from "suneditor-react";

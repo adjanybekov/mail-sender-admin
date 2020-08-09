@@ -1,17 +1,22 @@
 import { urls } from "../_constants/urls";
-import axios from 'axios';
+import axios from "axios";
 
 export const emailService = {
-    getAllEmails
+  getAllEmails,
+  unsubscribe,
 };
 
 function getAllEmails() {
- 
+  const requestOptions = { method: "GET", url: `${urls.emailUrl}/list` };
 
-    const requestOptions = 
-        {method:'GET',
-        url:`${urls.emailUrl}/list`,
-        }
+  return axios(requestOptions);
+}
 
-    return axios(requestOptions);
+function unsubscribe(email, hash) {
+  const requestOptions = {
+    method: "GET",
+    url: `${urls.emailUrl}/unsubscribe/${email}/${hash}`,
+  };
+
+  return axios(requestOptions);
 }

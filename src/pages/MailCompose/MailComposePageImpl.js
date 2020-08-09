@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { mailService } from "../../_services/mail.service";
 import { Editor } from "@tinymce/tinymce-react";
+import { TagsInput } from "../../_components";
+import store from "../../_mobx_storage/RecieverStorage";
 
-export function MailComposePageImpl() {
+export function MailComposePageImpl(props) {
   const [to, setTo] = useState("");
+  const [receivers, setReceivers] = useState([]);
   const [subject, setSubject] = useState("");
   const [text, setText] = useState("");
 
   const handleSubmit = () => {
     console.log("submitted", { to, subject, text });
-    mailService.createMail({ to, subject, text }).then((res) => {
+    mailService.createMail({ receivers, subject, text }).then((res) => {
       console.log(res.data);
     });
   };
@@ -18,6 +21,14 @@ export function MailComposePageImpl() {
     setText(content);
     console.log("Content was updated:", content);
   };
+
+  const selectedTags = (tags) => {
+    console.log(tags);
+    setReceivers(tags);
+  };
+  useEffect(() => {
+    console.log(store.receivers, "props storage");
+  }, []);
   return (
     <div>
       <div class="content-wrapper">
@@ -42,7 +53,7 @@ export function MailComposePageImpl() {
         <section class="content">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-3">
+              {/* <div class="col-md-3">
                 <a href="mailbox.html" class="btn btn-primary btn-block mb-3">
                   Back to Inbox
                 </a>
@@ -129,9 +140,9 @@ export function MailComposePageImpl() {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              <div class="col-md-9">
+              <div class="col-md-12">
                 <div class="card card-primary card-outline">
                   <div class="card-header">
                     <h3 class="card-title">Compose New Message</h3>
@@ -139,7 +150,7 @@ export function MailComposePageImpl() {
 
                   <div class="card-body">
                     <div class="form-group">
-                      <input
+                      {/* <input
                         class="form-control"
                         placeholder="To:"
                         value={to}
@@ -147,7 +158,9 @@ export function MailComposePageImpl() {
                           console.log(e.target.value);
                           setTo(e.target.value);
                         }}
-                      />
+                      /> */}
+
+                      <TagsInput selectedTags={selectedTags} tags={[]} set />
                     </div>
                     <div class="form-group">
                       <input
@@ -177,7 +190,7 @@ export function MailComposePageImpl() {
             onChange={handleEditorChange}/> */}
                       <Editor
                         apiKey="5pqv76cgxilvt1jry7en8v9e6la3amm9ne0wy4f588k25nti"
-                        initialValue="<p>This is the initial content of the editor</p>"
+                        initialValue="<p>Please type your message</p>"
                         init={{
                           height: 500,
                           menubar: true,
@@ -285,6 +298,10 @@ export function MailComposePageImpl() {
                       <button type="submit" class="btn btn-primary">
                         <i class="far fa-envelope" onClick={handleSubmit}></i>{" "}
                         Send
+                      </button>
+                      <button type="submit" class="btn btn-info">
+                        <i class="far fa-envelope" onClick={handleSubmit}></i>{" "}
+                        Send to All
                       </button>
                     </div>
                     <button type="reset" class="btn btn-default">

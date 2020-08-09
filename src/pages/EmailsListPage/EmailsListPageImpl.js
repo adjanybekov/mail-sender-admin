@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { emailService } from "../../_services/email.service";
+import moment from "moment";
+import "./index.css";
+import { useHistory } from "react-router-dom";
+import store from "../../_mobx_storage/RecieverStorage";
+
 // import * as moment from 'moment';
 
 export const EmailsListPageImpl = (props) => {
@@ -7,13 +12,19 @@ export const EmailsListPageImpl = (props) => {
     getEmails();
   }, []);
   const [emails, setEmails] = useState([]);
-
+  const history = useHistory();
   const getEmails = () => {
     emailService.getAllEmails().then((res) => {
       console.log(res.data);
       setEmails(res.data);
     });
   };
+
+  function mailContact() {
+    console.log("object");
+    store.recievers = ["asdad"];
+    history.push("/compose");
+  }
   return (
     <div>
       <div class="content-wrapper">
@@ -21,7 +32,7 @@ export const EmailsListPageImpl = (props) => {
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>List Mail</h1>
+                <h1>List Mail {props.store.filter}</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -55,25 +66,46 @@ export const EmailsListPageImpl = (props) => {
                         <tr>
                           <th>#</th>
                           <th>email</th>
+                          <th>status</th>
                           <th>created_at</th>
+                          <th>actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         {emails.map((x, index) => {
                           return (
                             <tr>
-                              <td>{index + 1}</td>
+                              <td>
+                                <input type="checkbox" />
+                              </td>
                               <td>{x.email}</td>
-                              <td>{x.createdAt}</td>
+                              <td>
+                                {x.status == 1 ? "Active" : "Deactivated"}
+                              </td>
+                              <td>{String(x.createdAt)}</td>
+                              <td>
+                                <button>Delete</button>
+                                <button onClick={mailContact}>Mail</button>
+                                <button>Deactivate</button>
+                              </td>
                             </tr>
                           );
                         })}
                       </tbody>
                       <tfoot>
                         <tr>
-                          <th>#</th>
+                          {/* <th>#</th>
                           <th>email</th>
-                          <th>created_at</th>
+                          <th>created_at</th> */}
+                          <button>mail selected</button>
+                          <button>delete selected</button>
+                          <div class="dropdown">
+                            <button>...</button>
+                            <div class="dropdown-content">
+                              <a href="#">Export</a>
+                              <a href="#">Import</a>
+                            </div>
+                          </div>
                         </tr>
                       </tfoot>
                     </table>

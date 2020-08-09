@@ -240,7 +240,7 @@ export const Navigation = (props) => {
                         }
                       >
                         <i className="far fa-circle nav-icon"></i>
-                        <p>Mail List</p>
+                        <p>Contacts</p>
                       </a>
                     </li>
                     <li className="nav-item">
