@@ -10,6 +10,7 @@ import { mailService } from "../../_services/mail.service";
 export const EmailsListPageImpl = (props) => {
   const [emails, setEmails] = useState([]);
   const [checked, setChecked] = useState([]);
+  let [checkAll, setCheckAll] = useState(false);
   useEffect(() => {
     getEmails();
   }, []);
@@ -79,7 +80,7 @@ export const EmailsListPageImpl = (props) => {
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>List Mail {store.filter}</h1>
+                <h1>List Mail </h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -111,7 +112,28 @@ export const EmailsListPageImpl = (props) => {
                     >
                       <thead>
                         <tr>
-                          <th>#</th>
+                          <th>
+                            <input
+                              type="checkbox"
+                              checked={checkAll}
+                              name="checkall"
+                              onChange={(e) => {
+                                let checkedd = [...checked];
+
+                                setCheckAll(!checkAll);
+                                checkAll = !checkAll;
+                                checkedd.map((elem, index) =>
+                                  checkAll
+                                    ? (checkedd[index] = true)
+                                    : (checkedd[index] = false)
+                                );
+                                setChecked(checkedd);
+
+                                // Arrays.fill(checked, true);
+                                console.log(checkedd);
+                              }}
+                            />
+                          </th>
                           <th>email</th>
                           <th>status</th>
                           <th>created_at</th>
