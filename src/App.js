@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/compose" component={MailComposePage} />
           <Route exact path="/list" component={EmailsListPage} />
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={MailComposePage} />
           <Route
             exact
             path="/unsubscribe/:email?/:hash?"
