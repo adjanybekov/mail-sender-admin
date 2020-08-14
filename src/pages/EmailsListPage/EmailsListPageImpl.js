@@ -75,40 +75,40 @@ export const EmailsListPageImpl = (props) => {
 
   return (
     <div>
-      <div class="content-wrapper">
-        <section class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
+      <div className="content-wrapper">
+        <section className="content-header">
+          <div className="container-fluid">
+            <div className="row mb-2">
+              <div className="col-sm-6">
                 <h1>List Mail </h1>
               </div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item">
+              <div className="col-sm-6">
+                <ol className="breadcrumb float-sm-right">
+                  <li className="breadcrumb-item">
                     <a href="#">Home</a>
                   </li>
-                  <li class="breadcrumb-item active">List Mail</li>
+                  <li className="breadcrumb-item active">List Mail</li>
                 </ol>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">
+        <section className="content">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-12">
+                <div className="card">
+                  <div className="card-header">
+                    <h3 className="card-title">
                       DataTable with minimal features & hover style
                     </h3>
                   </div>
 
-                  <div class="card-body">
+                  <div className="card-body">
                     <table
                       id="example2"
-                      class="table table-bordered table-hover"
+                      className="table table-bordered table-hover"
                     >
                       <thead>
                         <tr>
@@ -180,9 +180,9 @@ export const EmailsListPageImpl = (props) => {
                             mail selected
                           </button>
                           <button>delete selected</button>
-                          <div class="dropdown">
+                          <div className="dropdown">
                             <button>...</button>
-                            <div class="dropdown-content">
+                            <div className="dropdown-content">
                               <a href="#">Export</a>
                               <a href="#">Import</a>
                             </div>

@@ -37,38 +37,38 @@ export function MailComposePageImpl(props) {
 
   return useObserver(() => (
     <div>
-      <div class="content-wrapper">
-        <section class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
+      <div className="content-wrapper">
+        <section className="content-header">
+          <div className="container-fluid">
+            <div className="row mb-2">
+              <div className="col-sm-6">
                 <h1>Compose</h1>
               </div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item">
+              <div className="col-sm-6">
+                <ol className="breadcrumb float-sm-right">
+                  <li className="breadcrumb-item">
                     <a href="#">Home</a>
                   </li>
-                  <li class="breadcrumb-item active">Compose</li>
+                  <li className="breadcrumb-item active">Compose</li>
                 </ol>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="card card-primary card-outline">
-                  <div class="card-header">
-                    <h3 class="card-title">Compose New Message</h3>
+        <section className="content">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card card-primary card-outline">
+                  <div className="card-header">
+                    <h3 className="card-title">Compose New Message</h3>
                   </div>
 
-                  <div class="card-body">
-                    <div class="form-group">
+                  <div className="card-body">
+                    <div className="form-group">
                       {/* <input
-                        class="form-control"
+                        className="form-control"
                         placeholder="To:"
                         value={to}
                         onChange={(e) => {
@@ -86,9 +86,9 @@ export function MailComposePageImpl(props) {
                         }
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
-                        class="form-control"
+                        className="form-control"
                         placeholder="Subject:"
                         value={subject}
                         onChange={(e) => {
@@ -97,12 +97,12 @@ export function MailComposePageImpl(props) {
                         }}
                       />
                     </div>
-                    {/* <div class="form-group" style={{height: '300px'}}>
-                     <textarea id = "compose-textarea" class="form-control" placeholder="Text" style={{height: '300px'}} value={text} onChange={(e)=>{console.log(e.target.value);setText(e.target.value)}}/>
+                    {/* <div className="form-group" style={{height: '300px'}}>
+                     <textarea id = "compose-textarea" className="form-control" placeholder="Text" style={{height: '300px'}} value={text} onChange={(e)=>{console.log(e.target.value);setText(e.target.value)}}/>
 
                 </div> */}
 
-                    <div class="form-group">
+                    <div className="form-group">
                       {/* <SunEditor setOptions={{
 				    height: 200,
 					buttonList: [['undo', 'redo', 'font', 'fontSize', 'formatBlock'],
@@ -205,31 +205,37 @@ export function MailComposePageImpl(props) {
                         onEditorChange={handleEditorChange}
                       />
                     </div>
-                    <div class="form-group">
-                      <div class="btn btn-default btn-file">
-                        <i class="fas fa-paperclip"></i> Attachment
+                    <div className="form-group">
+                      <div className="btn btn-default btn-file">
+                        <i className="fas fa-paperclip"></i> Attachment
                         <input type="file" name="attachment" />
                       </div>
-                      <p class="help-block">Max. 32MB</p>
+                      <p className="help-block">Max. 32MB</p>
                     </div>
                   </div>
 
-                  <div class="card-footer">
-                    <div class="float-right">
-                      <button type="button" class="btn btn-default">
-                        <i class="fas fa-pencil-alt"></i> Draft
+                  <div className="card-footer">
+                    <div className="float-right">
+                      <button type="button" className="btn btn-default">
+                        <i className="fas fa-pencil-alt"></i> Draft
                       </button>
-                      <button type="submit" class="btn btn-primary">
-                        <i class="far fa-envelope" onClick={handleSubmit}></i>{" "}
+                      <button type="submit" className="btn btn-primary">
+                        <i
+                          className="far fa-envelope"
+                          onClick={handleSubmit}
+                        ></i>{" "}
                         Send
                       </button>
-                      <button type="submit" class="btn btn-info">
-                        <i class="far fa-envelope" onClick={handleSubmit}></i>{" "}
+                      <button type="submit" className="btn btn-info">
+                        <i
+                          className="far fa-envelope"
+                          onClick={handleSubmit}
+                        ></i>{" "}
                         Send to All
                       </button>
                     </div>
-                    <button type="reset" class="btn btn-default">
-                      <i class="fas fa-times"></i> Discard
+                    <button type="reset" className="btn btn-default">
+                      <i className="fas fa-times"></i> Discard
                     </button>
                   </div>
                 </div>
