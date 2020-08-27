@@ -219,7 +219,11 @@ export function MailComposePageImpl(props) {
                       <button type="button" className="btn btn-default">
                         <i className="fas fa-pencil-alt"></i> Draft
                       </button>
-                      <button type="submit" className="btn btn-primary">
+                      <button
+                        type="submit"
+                        className="btn btn-primary"
+                        onClick={handleSubmit}
+                      >
                         <i
                           className="far fa-envelope"
                           onClick={handleSubmit}
