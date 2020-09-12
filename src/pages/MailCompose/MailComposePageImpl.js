@@ -18,6 +18,8 @@ export function MailComposePageImpl(props) {
     console.log("submitted", { receivers, subject, text });
     mailService.createMail({ receivers, subject, text }).then((res) => {
       console.log(res.data);
+      alert("Message successfully sent!");
+      window.location.reload();
     });
   };
 
@@ -229,13 +231,6 @@ export function MailComposePageImpl(props) {
                           onClick={handleSubmit}
                         ></i>{" "}
                         Send
-                      </button>
-                      <button type="submit" className="btn btn-info">
-                        <i
-                          className="far fa-envelope"
-                          onClick={handleSubmit}
-                        ></i>{" "}
-                        Send to All
                       </button>
                     </div>
                     <button type="reset" className="btn btn-default">
