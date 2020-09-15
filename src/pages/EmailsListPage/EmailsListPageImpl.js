@@ -37,6 +37,17 @@ export const EmailsListPageImpl = (props) => {
     history.push("/compose");
   }
 
+  function deactivateEmail(emailId) {
+    // confirm("Are you sure to deactivate this email?");
+    var deactivate = window.confirm("Are you sure to deactivate this email?");
+    if (deactivate) {
+      emailService.deactivateEmailById(emailId).then((res) => {
+        console.log(res);
+        window.location.reload();
+      });
+    }
+  }
+
   function handleMailSelected() {
     // store.emails = receivers;
     emails
@@ -161,11 +172,16 @@ export const EmailsListPageImpl = (props) => {
                               </td>
                               <td>{String(x.createdAt)}</td>
                               <td>
-                                <button>Delete</button>
                                 <button onClick={() => mailContact(x.email)}>
                                   Mail
                                 </button>
-                                <button>Deactivate</button>
+                                <button
+                                  onClick={() => {
+                                    deactivateEmail(x.id);
+                                  }}
+                                >
+                                  Deactivate
+                                </button>
                               </td>
                             </tr>
                           );
