@@ -41,7 +41,7 @@ export const TagsInput = (props) => {
         ))}
       </ul>
       <input
-        className="input-class"
+        className="input-class form-control"
         type="text"
         onKeyUp={handleKeyUp}
         value={tag}

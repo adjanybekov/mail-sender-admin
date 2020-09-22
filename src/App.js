@@ -53,18 +53,14 @@ function App() {
             path="/list"
             component={EmailsListPage}
           />
-          <PrivateRoute
-            authed={window.localStorage.getItem("morningGlory") != null}
-            exact
-            path="/"
-            component={MailComposePage}
-          />
           <Route
             exact
             path="/unsubscribe/:email?/:hash?"
             component={UnsubscribePage}
           />
           <Route exact path="/login" component={LoginPage} />
+
+          <Redirect from="*" to="/compose" co />
         </Switch>
       </BrowserRouter>
     </div>

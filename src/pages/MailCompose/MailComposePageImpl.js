@@ -105,16 +105,20 @@ export function MailComposePageImpl(props) {
                 </div> */}
 
                     <div className="form-group">
-                      {/* <SunEditor setOptions={{
-				    height: 200,
-					buttonList: [['undo', 'redo', 'font', 'fontSize', 'formatBlock'],
-                    ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript', 'removeFormat'],
-
-                    ['fontColor', 'hiliteColor', 'outdent', 'indent', 'align', 'horizontalRule', 'list', 'table'],
-                    ['link', 'image', 'video', 'fullScreen', 'showBlocks', 'codeView', 'preview', 'print', 'save']]
-			}}
-            onChange={handleEditorChange}/> */}
-                      <Editor
+                      <div className="form-group" style={{ height: "300px" }}>
+                        <textarea
+                          id="compose-textarea"
+                          className="form-control"
+                          placeholder="Text"
+                          style={{ height: "300px" }}
+                          value={text}
+                          onChange={(e) => {
+                            console.log(e.target.value);
+                            setText(e.target.value);
+                          }}
+                        />
+                      </div>
+                      {/* <Editor
                         apiKey="5pqv76cgxilvt1jry7en8v9e6la3amm9ne0wy4f588k25nti"
                         initialValue="<p>Please type your message</p>"
                         init={{
@@ -205,7 +209,7 @@ export function MailComposePageImpl(props) {
                           // },
                         }}
                         onEditorChange={handleEditorChange}
-                      />
+                      /> */}
                     </div>
                     <div className="form-group">
                       <div className="btn btn-default btn-file">
