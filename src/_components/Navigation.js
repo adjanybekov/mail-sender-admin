@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { constants } from "../_constants/contstants";
 
 export const Navigation = (props) => {
   const [active, setActive] = useState([useLocation().pathname]);
@@ -48,8 +49,8 @@ export const Navigation = (props) => {
             </div>
           </form> */}
 
-          {/* <ul className="navbar-nav ml-auto">
-            <li className="nav-item dropdown">
+          <ul className="navbar-nav ml-auto">
+            {/* <li className="nav-item dropdown">
               <a className="nav-link" data-toggle="dropdown" href="#">
                 <i className="far fa-comments"></i>
                 <span className="badge badge-danger navbar-badge">3</span>
@@ -127,7 +128,7 @@ export const Navigation = (props) => {
               </div>
             </li>
 
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown"> 
               <a className="nav-link" data-toggle="dropdown" href="#">
                 <i className="far fa-bell"></i>
                 <span className="badge badge-warning navbar-badge">15</span>
@@ -169,9 +170,19 @@ export const Navigation = (props) => {
               >
                 <i className="fas fa-th-large"></i>
               </a>
+            </li>*/}
+            <li
+              className="nav-item"
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                localStorage.removeItem(constants.loginKey);
+                window.location.href = "/login";
+              }}
+            >
+              Exit
             </li>
-          </ul>*/}
-        </nav> 
+          </ul>
+        </nav>
 
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
           <a href="../../index3.html" className="brand-link">

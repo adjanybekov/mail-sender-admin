@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { constants } from "../../_constants/contstants";
 
 export function LoginPage() {
   const [username, setUsername] = useState(null);
@@ -22,9 +23,7 @@ export function LoginPage() {
     //for now redirect everybody
     e.preventDefault();
     if (username === "admin" && pwd === "admin") {
-      // window.localStorage.setItem("morningGlory", { morningGlory: true });
-
-      setWithExpiry("morningGlory", true, 10000000);
+      setWithExpiry(constants.loginKey, true, 10000000);
       window.location.href = "/compose";
     } else {
       window.location.reload();
@@ -54,7 +53,7 @@ export function LoginPage() {
 
           <input
             style={{ display: "block" }}
-            type="text"
+            type="password"
             onChange={(e) => {
               setPwd(e.target.value);
             }}

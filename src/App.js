@@ -7,6 +7,7 @@ import { EmailsListPage } from "./pages/EmailsListPage";
 import { UnsubscribePage } from "./pages/UnsubscribePage/UnsubscribePage";
 // import { decorate } from "mobx";
 import { PrivateRoute } from "./_components";
+import { constants } from "./_constants/contstants";
 
 function App() {
   const [authed, setAuthed] = useState(false);
@@ -32,7 +33,7 @@ function App() {
   }
 
   useEffect(() => {
-    var res = getWithExpiry("morningGlory");
+    var res = getWithExpiry(constants.loginKey);
     console.log(res);
     setAuthed(res);
   }, [authed]);
@@ -42,13 +43,13 @@ function App() {
       <BrowserRouter>
         <Switch>
           <PrivateRoute
-            authed={window.localStorage.getItem("morningGlory") != null} //window.localStorage.getItem("morningGlory") != null}
+            authed={window.localStorage.getItem(constants.loginKey) != null} //window.localStorage.getItem("morningGlory") != null}
             exact
             path="/compose"
             component={MailComposePage}
           />
           <PrivateRoute
-            authed={window.localStorage.getItem("morningGlory") != null}
+            authed={window.localStorage.getItem(constants.loginKey) != null}
             exact
             path="/list"
             component={EmailsListPage}
