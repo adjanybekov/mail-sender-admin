@@ -48,7 +48,7 @@ export const TagsInput = (props) => {
         onChange={(e) => {
           setTag(e.target.value);
         }}
-        placeholder="Add email"
+        placeholder="Add email & press Enter"
       />
     </div>
   );

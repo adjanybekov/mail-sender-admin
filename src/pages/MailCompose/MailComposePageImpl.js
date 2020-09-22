@@ -211,20 +211,10 @@ export function MailComposePageImpl(props) {
                         onEditorChange={handleEditorChange}
                       /> */}
                     </div>
-                    <div className="form-group">
-                      <div className="btn btn-default btn-file">
-                        <i className="fas fa-paperclip"></i> Attachment
-                        <input type="file" name="attachment" />
-                      </div>
-                      <p className="help-block">Max. 32MB</p>
-                    </div>
                   </div>
 
                   <div className="card-footer">
                     <div className="float-right">
-                      <button type="button" className="btn btn-default">
-                        <i className="fas fa-pencil-alt"></i> Draft
-                      </button>
                       <button
                         type="submit"
                         className="btn btn-primary"
@@ -237,9 +227,6 @@ export function MailComposePageImpl(props) {
                         Send
                       </button>
                     </div>
-                    <button type="reset" className="btn btn-default">
-                      <i className="fas fa-times"></i> Discard
-                    </button>
                   </div>
                 </div>
               </div>

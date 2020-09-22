@@ -21,18 +21,18 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li className="nav-item d-none d-sm-inline-block">
-              <a href="../../index3.html" className="nav-link">
+              {/* <a href="../../index3.html" className="nav-link">
                 Home
-              </a>
+              </a> */}
             </li>
             <li className="nav-item d-none d-sm-inline-block">
-              <a href="#" className="nav-link">
+              {/* <a href="#" className="nav-link">
                 Contact
-              </a>
+              </a> */}
             </li>
           </ul>
 
-          <form className="form-inline ml-3">
+          {/* <form className="form-inline ml-3">
             <div className="input-group input-group-sm">
               <input
                 className="form-control form-control-navbar"
@@ -46,9 +46,9 @@ export const Navigation = (props) => {
                 </button>
               </div>
             </div>
-          </form>
+          </form> */}
 
-          <ul className="navbar-nav ml-auto">
+          {/* <ul className="navbar-nav ml-auto">
             <li className="nav-item dropdown">
               <a className="nav-link" data-toggle="dropdown" href="#">
                 <i className="far fa-comments"></i>
@@ -170,8 +170,8 @@ export const Navigation = (props) => {
                 <i className="fas fa-th-large"></i>
               </a>
             </li>
-          </ul>
-        </nav>
+          </ul>*/}
+        </nav> 
 
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
           <a href="../../index3.html" className="brand-link">
@@ -181,38 +181,22 @@ export const Navigation = (props) => {
               className="brand-image img-circle elevation-3"
               style={{ opacity: ".8" }}
             />
-            <span className="brand-text font-weight-light">AdminLTE 3</span>
+            <span className="brand-text font-weight-light">Morning-Glory</span>
           </a>
 
           <div className="sidebar">
             <div className="user-panel mt-3 pb-3 mb-3 d-flex">
               <div className="image">
-                <img
+                {/* <img
                   src="assets/img/user2-160x160.jpg"
                   className="img-circle elevation-2"
                   alt="User Image"
-                />
+                /> */}
               </div>
               <div className="info">
                 <a href="#" className="d-block">
-                  Alexander Pierce
+                  Bektur Elebes
                 </a>
-              </div>
-            </div>
-
-            <div className="form-inline">
-              <div className="input-group" data-widget="sidebar-search">
-                <input
-                  className="form-control form-control-sidebar"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <div className="input-group-append">
-                  <button className="btn btn-sidebar">
-                    <i className="fas fa-search fa-fw"></i>
-                  </button>
-                </div>
               </div>
             </div>
 
@@ -254,7 +238,7 @@ export const Navigation = (props) => {
                         <p>Compose</p>
                       </a>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <a
                         href="/outbox"
                         className={
@@ -264,7 +248,7 @@ export const Navigation = (props) => {
                         <i className="far fa-circle nav-icon"></i>
                         <p>Outbox</p>
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </li>
               </ul>
@@ -274,11 +258,14 @@ export const Navigation = (props) => {
         {props.children}
         <footer className="main-footer">
           <div className="float-right d-none d-sm-block">
-            <b>Version</b> 3.1.0-pre
+            <b>Version</b> 1.0.0
           </div>
           <strong>
-            Copyright &copy; 2014-2020{" "}
-            <a href="https://adminlte.io">AdminLTE.io</a>.
+            Copyright &copy; 2020{" "}
+            <a href="https://adjanybekov.github.io" target="_blank">
+              Azat & Company
+            </a>
+            .
           </strong>{" "}
           All rights reserved.
         </footer>
